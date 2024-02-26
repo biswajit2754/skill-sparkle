@@ -1,9 +1,12 @@
+"use client"
 import { Search, BellDot } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-
 import React from 'react'
+import { UserButton, useUser } from '@clerk/nextjs'
+import Link from 'next/link'
 
 function Header() {
+  const {user,isLoaded}= useUser();
   return (
     <div className="p-4 bg-white flex justify-between ">
         {/* Search bar */}
@@ -14,7 +17,11 @@ function Header() {
         {/* Get Started Button */}
         <div className="flex items-center gap-4">
             <BellDot className="text-gray-500 hover: animate-pulse "/>
-            <Button>Get Started</Button>
+            {isLoaded&&user
+            ?<UserButton afterSignOutUrl='courses'/>
+            :  <Link href={'/sign-up'}>
+                  <Button>Get Started</Button>
+            </Link> }
 
         </div>
     </div>
