@@ -1,5 +1,6 @@
 import React from 'react'
 import VideoPlayer from './VideoPlayer';
+import Markdown from 'react-markdown';
 
 function CourseVideoDescription({courseInfo}) {
   return (
@@ -11,6 +12,10 @@ function CourseVideoDescription({courseInfo}) {
 
       {/* video player */}
       <VideoPlayer videoUrl={courseInfo?.chapter?.[0]?.video?.url}/>
+
+      {/*Description */}
+      <h2 className='mt-5 text-[17px] font-semibold'>About This Course</h2>
+        <Markdown className='text-[12px] font-bold mt-2 leading-7'>{courseInfo.description}</Markdown>
     </div>
   )
 }

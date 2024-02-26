@@ -3,7 +3,8 @@ import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import CourseVideoDescription from './_components/CourseVideoDescription';
 import GlobalApi from '@/app/_utils/GlobalApi';
-
+import CourseEnrollSection from './_components/CourseEnrollSection';
+import CourseContentSection from './_components/CourseContentSection';
 function CoursePreview({params}) {
 
     const [courseInfo,setCourseInfo]=useState("hyy");
@@ -19,7 +20,7 @@ function CoursePreview({params}) {
          GlobalApi.getCourseById(params?.courseId).then(resp=>{
             setCourseInfo(resp?.courseList);
       })
-
+      
     }
     
 
@@ -33,7 +34,9 @@ function CoursePreview({params}) {
 
         {/* Course Content */}
         <div>
+          <CourseEnrollSection/>
 
+          <CourseContentSection courseInfo={courseInfo} />
         </div>
     </div>
   )
