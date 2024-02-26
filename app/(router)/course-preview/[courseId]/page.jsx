@@ -6,7 +6,7 @@ import GlobalApi from '@/app/_utils/GlobalApi';
 
 function CoursePreview({params}) {
 
-    const [courseInfo,setCourseInfo]=useState();
+    const [courseInfo,setCourseInfo]=useState("hyy");
     useEffect(()=>{
       params&&getCourseInfoById();
     },[params])
@@ -17,15 +17,13 @@ function CoursePreview({params}) {
 
      const getCourseInfoById=()=>{
          GlobalApi.getCourseById(params?.courseId).then(resp=>{
-             const data=(resp?.courseList);
-          setCourseInfo(data);
-          console.log(courseInfo);
+            setCourseInfo(resp?.courseList);
       })
 
     }
     
 
-  return (
+  return courseInfo&& (
     <div className=' grid grid-cols-1 md:grid-cols-3 p-5 gap-3'>
 
         {/* Title Video, Description */}
