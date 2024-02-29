@@ -15,11 +15,10 @@ function CourseEnrollSection({courseInfo,isUserAlreadyEnrolled}) {
     const router=useRouter();
     useEffect(()=>{
       console.log("isUserAlreadyEnrolled",isUserAlreadyEnrolled)
-    },[])
+    },[isUserAlreadyEnrolled])
     //Enroll to the Course 
     const onEnrollCourse=()=>{
       GlobalApi.enrollToCourse(courseInfo?.slug,user?.primaryEmailAddress?.emailAddress).then(resp=>{
-        console.log(resp);
         if(resp){
 
           //Show Toast on Successfull Enroll
@@ -61,7 +60,7 @@ function CourseEnrollSection({courseInfo,isUserAlreadyEnrolled}) {
     
        {isUserAlreadyEnrolled&& <div className='flex flex-col gap-3 mt-3'>
             <h2 className='text-white font-light'>
-              Continue To Learn Your Project
+              Continue To Watch Course Videos
               </h2>
             <Link href={'/watch-course/'+isUserAlreadyEnrolled}><Button className='bg-white text-primary hover:bg-white hover:text-primary'>Continue</Button>
             </Link>

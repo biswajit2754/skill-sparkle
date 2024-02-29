@@ -34,8 +34,7 @@ function CoursePreview({params}) {
     const checkUserEnrolledToCourse=()=>{
       GlobalApi.checkEnrolledToCourse(courseInfo.slug,user.primaryEmailAddress.emailAddress)
       .then(resp=>{
-        console.log(resp)
-          if(resp?.userEnrollCourses)
+          if(resp?.userEnrollCourses[0]?.id)
           {
             setIsUserAlreadyEnrolled(resp?.userEnrollCourses[0]?.id);
           }
@@ -54,7 +53,8 @@ function CoursePreview({params}) {
           <CourseEnrollSection courseInfo={courseInfo}
           isUserAlreadyEnrolled={isUserAlreadyEnrolled}/>
 
-          <CourseContentSection courseInfo={courseInfo} />
+          <CourseContentSection courseInfo={courseInfo} 
+             isUserAlreadyEnrolled={isUserAlreadyEnrolled}/>
         </div>
     </div>
   )
