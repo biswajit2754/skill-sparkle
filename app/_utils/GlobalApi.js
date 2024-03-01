@@ -141,7 +141,11 @@ const checkEnrolledToCourse=async(courseId,email)=>{
           banner {
             url
           }
+<<<<<<< Updated upstream
           chapter (first:50){
+=======
+          chapter (first: 50) {
+>>>>>>> Stashed changes
             ... on Chapter {
               id
               name
