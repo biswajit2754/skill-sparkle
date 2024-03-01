@@ -4,7 +4,7 @@ import React from "react";
 function CourseItem({course}) {
   
   return (
-    <div className=" border rounded-xl 
+    <div className=" border rounded-md
      hover:shadow-md hover:shadow-purple-300 cursor-pointer ">
       <Image src={course?.banner?.url}
         width={500}

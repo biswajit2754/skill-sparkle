@@ -13,7 +13,7 @@ function SideBanner() {
 
     const getSideBanners=()=>{
         GlobalApi.getSideBanner().then(resp=>{
-            console.log(resp);
+            // console.log(resp);
             setSideBannerList(resp.sideBanners);
         })
     }
