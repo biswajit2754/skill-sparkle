@@ -1,16 +1,18 @@
+import { UserMemberContext } from '@/app/_context/UserMemberContext';
 import GlobalApi from '@/app/_utils/GlobalApi';
 import { Button, buttonVariants } from '@/components/ui/button'
 import { useEmailLink, useUser } from '@clerk/nextjs';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React from 'react'
+import React, { useContext } from 'react'
 import { useEffect } from 'react';
 import { toast } from "sonner"
 
 
 function CourseEnrollSection({courseInfo,isUserAlreadyEnrolled}) {
-    const membership=false;
+    // const membership=false;
     const{user}=useUser();
+    const {isMember,setIsMember}=useContext(UserMemberContext)
 
     const router=useRouter();
     useEffect(()=>{
@@ -37,7 +39,7 @@ function CourseEnrollSection({courseInfo,isUserAlreadyEnrolled}) {
         
         <h2 className='text-[20px] font-bold text-white'>Enroll To The Course</h2>
         {/* user has Membership and Already Login */}
-       { user&&(membership||courseInfo.free)&&!isUserAlreadyEnrolled?<div className='flex flex-col gap-3 mt-3'>
+       { user&&(isMember||courseInfo.free)&&!isUserAlreadyEnrolled?<div className='flex flex-col gap-3 mt-3'>
             <h2 className='text-white font-light'>Enroll Now To Start Learning and Building The Project</h2>
             <Button className='bg-white text-primary hover:bg-white
              hover:text-primary'

@@ -4,7 +4,7 @@ import React from 'react'
 function WellcomeBanner() {
   return (
     <div className=" flex gap-5 items-center bg-white rounded-xl p-5">
-        <Image src='/vercel.svg' alt='panda' width={100} height={100}/>
+        <Image src='/panda.jpg' alt='panda' width={100} height={100}/>
 
         <div>
             <h2 className=" font-bold text-[27px]">Wellcome to <span className=" text-primary">Skill Sparkle</span></h2>

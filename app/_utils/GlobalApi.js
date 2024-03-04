@@ -141,11 +141,7 @@ const checkEnrolledToCourse=async(courseId,email)=>{
           banner {
             url
           }
-<<<<<<< Updated upstream
           chapter (first:50){
-=======
-          chapter (first: 50) {
->>>>>>> Stashed changes
             ... on Chapter {
               id
               name
@@ -228,6 +224,37 @@ const checkEnrolledToCourse=async(courseId,email)=>{
   }
 
 
+  const addNewMember=async(email,paymentId)=>{
+    const query=gql`
+    mutation MyMutation {
+      createMembership(data: {active: true, email: "`+email+`", paymentId: "`+paymentId+`"}) {
+        id
+      }
+      publishManyMemberships(to: PUBLISHED) {
+        count
+      }
+    }
+    `
+    const result=await request(MASTER_URL,query);
+  return result;
+  }
+
+  const checkForMembership=async(email)=>{
+    const query=gql`
+    query MyQuery {
+      memberships(where: {email: "`+email+`"}) {
+        email
+        id
+        paymentId
+        createdAt
+      }
+    }    
+    `
+    const result=await request(MASTER_URL,query);
+  return result;
+  }
+
+
 export default{
     getCourseList,
     getSideBanner,
@@ -236,5 +263,7 @@ export default{
     checkEnrolledToCourse,
     getUserEnrolledCourseDetails,
     markChapterCompleted,
-    getUserAllEnrolledCourseList
+    getUserAllEnrolledCourseList,
+    addNewMember,
+    checkForMembership
 }
