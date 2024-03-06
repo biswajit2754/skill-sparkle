@@ -12,10 +12,10 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function SideNav() {
-    const {user}=useUser();
+  const { user } = useUser();
   const menu = [
     {
       id: 6,
@@ -67,22 +67,25 @@ function SideNav() {
   return (
     <div className="p-5 bg-white shadow-sm border h-auto ">
       <Image src="/sslogo.png" alt="logo" width={200} height={60} />
-
+      
       <hr className="mt-7"></hr>
       {/* Menu List*/}
       <div className=" mt-5 ">
-        {menu.map((item, index) =>item.auth&& (
-          <Link key={`${item.id}-${index}`} href={item?.path}>
-            <div
-              className={`group flex gap-3 mt-2 p-3 text-[18px] items-center text-gray-500 cursor-pointer hover:bg-primary hover:text-white rounded-md transition-all ease-in-out duration-200 
+        {menu.map(
+          (item, index) =>
+            item.auth && (
+              <Link key={`${item.id}-${index}`} href={item?.path}>
+                <div
+                  className={`group flex gap-3 mt-2 p-3 text-[18px] items-center text-gray-500 cursor-pointer hover:bg-primary hover:text-white rounded-md transition-all ease-in-out duration-200 
                  ${path.includes(item.path) && " bg-primary text-white"} 
                 `}
-            >
-              <item.icon className=" group-hover:animate-bounce " />
-              <h2>{item.name}</h2>
-            </div>
-          </Link>
-        ))}
+                >
+                  <item.icon className=" group-hover:animate-bounce " />
+                  <h2>{item.name}</h2>
+                </div>
+              </Link>
+            )
+        )}
       </div>
     </div>
   );
