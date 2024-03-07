@@ -15,7 +15,7 @@ import Link from "next/link";
 function CourseList() {
   
   const [courseList, setCourseList] = useState([]);
-  
+
 
   useEffect(() => {
     getAllCourses();
@@ -27,6 +27,7 @@ function CourseList() {
       setCourseList(data);
     });
   };
+
   return (
     <div className=" p-5 bg-white rounded-lg mt-5">
       {/* Title and filter */}
@@ -37,10 +38,11 @@ function CourseList() {
             <SelectValue placeholder="Filter" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="light">All</SelectItem>
-            <SelectItem value="dark">Paid</SelectItem>
-            <SelectItem value="system">Free</SelectItem>
-          </SelectContent>
+        {/* Set up the event handler on each SelectItem */}
+        <SelectItem value="all" >All</SelectItem>
+        <SelectItem value="paid">Paid</SelectItem>
+        <SelectItem value="free">Free</SelectItem>
+      </SelectContent>
         </Select>
       </div>
       {/* Display Course list */}

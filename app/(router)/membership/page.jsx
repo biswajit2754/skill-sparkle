@@ -178,7 +178,7 @@ function Membership() {
             <article className="rounded-xl border-2 border-gray-100 bg-white">
               <div className="flex items-start gap-4 p-4 sm:p-6 lg:p-8">
                 <a href="#" className="block shrink-0">
-                  <Image src="/premium.jpeg" alt="premium" width={100} height={100} className="size-14 rounded-lg object-cover"/>
+                  <Image src={user?.imageUrl} alt="premium" width={100} height={100} className="size-14 rounded-xl object-cover"/>
                   
                 </a>
 
@@ -190,9 +190,9 @@ function Membership() {
                   </h1>
 
                   <p className="line-clamp-3 text-sm text-gray-700 mt-3">
-                  <h2>User ID: {user?.id} </h2>
-                    <h2>Name : {user?.fullName}</h2>
-                    <h2>Email : {user?.primaryEmailAddress.emailAddress}</h2>
+                  <h1>User ID : {user?.id} </h1>
+                  <h1>Name    : {user?.fullName}</h1>
+                  <h1>Email   : {user?.primaryEmailAddress.emailAddress}</h1>
                     
                   </p>
 

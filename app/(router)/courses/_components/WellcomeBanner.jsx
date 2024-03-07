@@ -8,7 +8,7 @@ function WellcomeBanner() {
 
         <div>
             <h2 className=" font-bold text-[27px]">Wellcome to <span className=" text-primary">Skill Sparkle</span></h2>
-            <h2 className=' text-gray-500'>Explore, Learn and read all the cources</h2>
+            <h2 className=' text-gray-500'>Explore, Learn and read all the courses</h2>
         </div>
     </div>
   )
