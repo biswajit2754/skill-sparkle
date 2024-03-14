@@ -8,6 +8,7 @@ import {
   Mail,
   LayoutGrid,
   LayoutDashboard,
+  BookAudioIcon,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -33,9 +34,9 @@ function SideNav() {
     },
     {
       id: 2,
-      name: "Store",
-      icon: LayoutGrid,
-      path: "/store",
+      name: "Books",
+      icon: BookAudioIcon,
+      path: "/books",
       auth: true,
     },
     {
@@ -54,9 +55,9 @@ function SideNav() {
     },
     {
       id: 5,
-      name: "Newsletter",
+      name: "Contact Us",
       icon: Mail,
-      path: "/newsletter",
+      path: "/contact",
       auth: true,
     },
   ];
@@ -65,7 +66,7 @@ function SideNav() {
     console.log("path", path);
   }, []);
   return (
-    <div className="p-5 bg-white shadow-sm border h-auto ">
+    <div className="p-5 bg-white shadow-sm border h-auto  ">
       <Image src="/sslogo.png" alt="logo" width={200} height={60} />
       
       <hr className="mt-7"></hr>

@@ -9,7 +9,7 @@ export default function Home() {
   const router=useRouter();
   const {user,isLoaded}=useUser();
   useEffect(()=>{
-    user&&checkUserMembership();
+    user //&&checkUserMembership();
       if(user)
       {
         router.push('/dashboard')

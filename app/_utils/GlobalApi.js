@@ -254,6 +254,77 @@ const checkEnrolledToCourse=async(courseId,email)=>{
   return result;
   }
 
+  const getBookList=async()=>{
+    const query=gql`
+    query MyQuery {
+      bookLists(first: 50, orderBy: name_ASC) {
+        id
+        name
+        banner {
+          url
+        }
+        page {
+          ... on Page {
+            id
+            name
+            image {
+              url
+            }
+          }
+        }
+        totalPages
+        slug
+      }
+    }
+    `
+
+    const result=await request(MASTER_URL,query);
+    return result;
+
+}
+
+const getBookById=async(bookId)=>{
+  const query=gql`
+  query MyQuery {
+    bookList (where: {slug: "`+bookId+`"}){
+      banner {
+        url
+      }
+      page(first: 50) {
+        ... on Page {
+          id
+          name
+          image {
+            url
+          }
+        }
+      }
+      id
+      name
+      slug
+      totalPages
+    }
+  }  
+  `
+  const result=await request(MASTER_URL,query);
+  return result;
+}
+
+const addNewEnquiry=async(name,email,number,message)=>{
+  const query=gql`
+  mutation MyMutation {
+    createEnquiry(data: {name: "`+name+`", email: "`+email+`", number: `+number+`, message: "`+message+`"}) {
+      id
+    }
+    publishManyEnquiries(to: PUBLISHED) {
+      count
+    }
+  }
+  `
+  const result=await request(MASTER_URL,query);
+return result;
+}
+
 
 export default{
     getCourseList,
@@ -265,5 +336,8 @@ export default{
     markChapterCompleted,
     getUserAllEnrolledCourseList,
     addNewMember,
-    checkForMembership
+    checkForMembership,
+    getBookList,
+    getBookById,
+    addNewEnquiry
 }
