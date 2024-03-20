@@ -5,6 +5,7 @@ import Header from './_components/Header'
 import { useUser } from '@clerk/nextjs'
 import GlobalApi from '../_utils/GlobalApi'
 import { UserMemberContext } from '../_context/UserMemberContext'
+import MobileNav from './_components/MobileNav'
 
 function layout({children}) {
 
@@ -26,9 +27,13 @@ function layout({children}) {
   }
   return (
     <div>
+    <div className="sm:w-64  sm:block fixed " >
+           <MobileNav/>
+      </div>
       <div className="sm:w-64  sm:block fixed hidden" >
            <SideNav/>
       </div>
+      
       <div className="sm:ml-64">
             <Header/>
             {children}

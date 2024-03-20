@@ -13,7 +13,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-function SideNav() {
+function MobileNav() {
   const { user } = useUser();
   const menu = [
     {
@@ -63,19 +63,20 @@ function SideNav() {
   useEffect(() => {
     console.log("path", path);
   }, []);
+  const [expand,setExpand]=useState(false)
   return (
-    <div className="p-5 bg-white shadow-sm border h-auto  ">
-      <Image src="/sslogo.png" alt="logo" width={200} height={60} />
+    <div className="p-5 bg-white shadow-sm  h-auto bg-transparent fixed ">
+      <Image src="/toggle.png" alt="toggle" width={25} height={5} className=' cursor-pointer' onClick={()=>{setExpand(!expand)}}/>
       
       <hr className="mt-7"></hr>
       {/* Menu List*/}
-      <div className=" mt-5 ">
+      {expand&&<div className=" mt-5 ">
         {menu.map(
           (item, index) =>
             item.auth && (
               <Link key={`${item.id}-${index}`} href={item?.path}>
                 <div
-                  className={`group flex gap-3 mt-2 p-3 text-[18px] items-center text-gray-500 cursor-pointer hover:bg-primary hover:text-white rounded-md transition-all ease-in-out duration-200 
+                  className={`group flex gap-3 mt-2 p-3 text-[10px] bg-slate-200 items-center text-gray-500 cursor-pointer hover:bg-primary hover:text-white rounded-md transition-all ease-in-out duration-200 
                  ${path.includes(item.path) && " bg-primary text-white"} 
                 `}
                 >
@@ -85,9 +86,9 @@ function SideNav() {
               </Link>
             )
         )}
-      </div>
+      </div>}
     </div>
   );
 }
 
-export default SideNav;
+export default MobileNav;

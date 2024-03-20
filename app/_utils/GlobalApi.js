@@ -325,6 +325,28 @@ const addNewEnquiry=async(name,email,number,message)=>{
 return result;
 }
 
+const getBlogList=async()=>{
+  const query=gql`
+  query MyQuery {
+    blogPosts(first: 100, orderBy: publishedAt_ASC) {
+      id
+      name
+      image {
+        url
+      }
+      titel
+      tarikh
+      shortDesc
+      url
+    }
+  }
+  `
+
+  const result=await request(MASTER_URL,query);
+  return result;
+
+}
+
 
 export default{
     getCourseList,
@@ -339,5 +361,6 @@ export default{
     checkForMembership,
     getBookList,
     getBookById,
-    addNewEnquiry
+    addNewEnquiry,
+    getBlogList
 }
