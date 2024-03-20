@@ -65,7 +65,7 @@ function SideNav() {
   }, []);
   return (
     <div className="p-5 bg-white shadow-sm border h-auto  ">
-      <Image src="/sslogo.png" alt="logo" width={200} height={60} />
+      <Image src="/logo.jpg" alt="logo" width={200} height={60} />
       
       <hr className="mt-7"></hr>
       {/* Menu List*/}
