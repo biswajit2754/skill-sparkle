@@ -230,7 +230,7 @@ const checkEnrolledToCourse=async(courseId,email)=>{
       createMembership(data: {active: true, email: "`+email+`", paymentId: "`+paymentId+`"}) {
         id
       }
-      publishManyMemberships(to: PUBLISHED) {
+      publishManyMemberships(to: PUBLISHED) {                                                       
         count
       }
     }
