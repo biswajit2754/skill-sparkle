@@ -13,7 +13,7 @@ function BookItem({book}) {
       />
 
       <div className=" flex flex-col gap-1 p-2">
-         <h2 className=" font-medium underline">{book.name} </h2>
+         <h2 className=" font-medium underline">*{book.name} </h2>
       </div>
 
     </div>
